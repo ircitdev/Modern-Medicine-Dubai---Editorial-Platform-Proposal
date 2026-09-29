@@ -69,7 +69,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
       />
 
       {/* Modal Dialog */}
-      <div className="relative bg-white rounded-3xl border border-[#E2DFD7] shadow-2xl max-w-lg w-full p-7 sm:p-9 space-y-6 z-10 animate-in fade-in zoom-in-95 duration-200">
+      <div className="relative bg-white rounded-2xl sm:rounded-3xl border border-[#E2DFD7] shadow-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto p-5 sm:p-9 space-y-5 sm:space-y-6 z-10 animate-in fade-in zoom-in-95 duration-200">
         
         {/* Close Button */}
         <button

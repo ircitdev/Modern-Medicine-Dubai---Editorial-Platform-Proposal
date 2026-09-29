@@ -2,6 +2,7 @@
   "name": "Modern Medicine Dubai - Editorial Platform & Proposal",
   "description": "Интерактивная цифровая платформа и ТЗ клиники Modern Medicine в Fairmont Dubai для Елены Киреевой: модульный конструктор бюджета, конкурентный бенчмаркинг, аналитика рынка и прототип с ИИ-триажем.",
   "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
 }
-

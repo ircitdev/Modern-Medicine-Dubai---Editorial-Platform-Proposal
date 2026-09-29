@@ -117,14 +117,14 @@ export const FloatingChatWidget: React.FC<FloatingChatWidgetProps> = ({
   return (
     <>
       {/* Floating Launcher Button */}
-      <div className="fixed bottom-6 right-6 z-40">
+      <div className="fixed bottom-[116px] md:bottom-6 right-3.5 sm:right-6 z-40">
         {!isOpen && (
           <button
             onClick={() => {
               setIsOpen(true);
               confetti({ particleCount: 25, spread: 40, origin: { x: 0.9, y: 0.9 } });
             }}
-            className="group relative flex items-center gap-3 px-4 py-3.5 bg-[#222321] hover:bg-black text-white rounded-full shadow-2xl transition-all duration-300 hover:scale-105 active:scale-95 border border-white/20 cursor-pointer"
+            className="group relative flex items-center gap-2.5 sm:gap-3 px-3.5 sm:px-4 py-2.5 sm:py-3.5 bg-[#222321] hover:bg-black text-white rounded-full shadow-2xl transition-all duration-300 hover:scale-105 active:scale-95 border border-white/20 cursor-pointer"
           >
             {/* Animated Pulse */}
             <span className="absolute -top-1 -right-1 flex h-3.5 w-3.5">
@@ -146,7 +146,7 @@ export const FloatingChatWidget: React.FC<FloatingChatWidgetProps> = ({
             </div>
 
             <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-white/20 text-white sm:ml-1">
-              {totalWeeks.toFixed(0)} нед.
+              AI ТЗ
             </span>
           </button>
         )}
@@ -154,7 +154,7 @@ export const FloatingChatWidget: React.FC<FloatingChatWidgetProps> = ({
 
       {/* Floating Chat Modal / Drawer */}
       {isOpen && (
-        <div className="fixed bottom-4 sm:bottom-6 right-4 sm:right-6 z-50 w-[calc(100vw-32px)] sm:w-[420px] max-h-[85vh] h-[600px] bg-white rounded-3xl border border-[#E2DFD7] shadow-2xl flex flex-col overflow-hidden animate-in fade-in slide-in-from-bottom-8 duration-300">
+        <div className="fixed bottom-2 sm:bottom-6 right-2 sm:right-6 left-2 sm:left-auto z-50 w-auto sm:w-[420px] max-h-[85vh] h-[540px] sm:h-[600px] bg-white rounded-2xl sm:rounded-3xl border border-[#E2DFD7] shadow-2xl flex flex-col overflow-hidden animate-in fade-in slide-in-from-bottom-8 duration-300">
           
           {/* Header */}
           <div className="bg-[#222321] text-white p-4 sm:p-5 flex items-center justify-between border-b border-white/10 shrink-0">

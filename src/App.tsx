@@ -11,6 +11,7 @@ import { PrototypeView } from './components/PrototypeView';
 import { BookingModal } from './components/BookingModal';
 import { B2BProposalModal } from './components/B2BProposalModal';
 import { Toast } from './components/Toast';
+import { MobileBottomNav } from './components/MobileBottomNav';
 import { Footer } from './components/Footer';
 import { FloatingChatWidget } from './components/FloatingChatWidget';
 import { ArrowRight, Share2, Sparkles } from 'lucide-react';
@@ -138,7 +139,7 @@ export default function App() {
       />
 
       {/* Main Content Area */}
-      <main className="flex-grow max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 w-full">
+      <main className="flex-grow max-w-[1360px] mx-auto px-3.5 sm:px-6 lg:px-8 py-6 sm:py-12 pb-28 md:pb-12 w-full">
         {currentView === 'configurator' && (
           <ConfiguratorView
             modules={modules}
@@ -195,33 +196,26 @@ export default function App() {
         )}
       </main>
 
-      {/* Mobile Sticky Bar for Configurator View */}
+      {/* Mobile Sticky Bar for Configurator View (positioned above MobileBottomNav) */}
       {currentView === 'configurator' && (
-        <div className="fixed bottom-0 left-0 w-full bg-white/95 backdrop-blur-md border-t border-[#E2DFD7] p-4 z-40 lg:hidden shadow-[0_-10px_30px_rgba(0,0,0,0.05)]">
-          <div className="flex justify-between items-center max-w-7xl mx-auto">
+        <div className="fixed bottom-[56px] left-0 w-full bg-white/95 backdrop-blur-md border-t border-[#E2DFD7] px-3.5 py-2.5 z-30 md:hidden shadow-[0_-6px_20px_rgba(0,0,0,0.05)]">
+          <div className="flex justify-between items-center max-w-md mx-auto">
             <div>
               <div className="text-[10px] text-[#747775] font-semibold uppercase tracking-wider">
                 Бюджет ({selectedModules.length} мод. • {totalWeeks.toFixed(1)} нед.)
               </div>
-              <div className="text-lg font-serif font-bold text-[#222321] leading-tight">
+              <div className="text-base font-serif font-bold text-[#222321] leading-tight">
                 {currentCurrency === 'RUB'
                   ? `~ ${totalRUB.toLocaleString('ru-RU')} ₽`
                   : currentCurrency === 'USD'
                   ? `~ $${totalUSD.toLocaleString('en-US')}`
                   : `~ ${totalAED.toLocaleString('en-US')} AED`}
               </div>
-              <div className="text-[10px] text-[#747775]">
-                {currentCurrency === 'RUB'
-                  ? `~ ${totalAED.toLocaleString('en-US')} AED • $${totalUSD.toLocaleString('en-US')}`
-                  : currentCurrency === 'USD'
-                  ? `~ ${totalAED.toLocaleString('en-US')} AED • ${totalRUB.toLocaleString('ru-RU')} ₽`
-                  : `~ ${totalRUB.toLocaleString('ru-RU')} ₽ • $${totalUSD.toLocaleString('en-US')}`}
-              </div>
             </div>
 
             <button
               onClick={handleMobileWhatsAppExport}
-              className="bg-[#222321] hover:bg-black text-white px-5 py-3 rounded-full text-xs font-medium shadow-md active:scale-95 transition-transform flex items-center gap-2"
+              className="bg-[#222321] hover:bg-black text-white px-4 py-2 rounded-full text-xs font-medium shadow-md active:scale-95 transition-transform flex items-center gap-1.5 cursor-pointer"
             >
               <span>Согласовать ТЗ</span>
               <ArrowRight className="w-3.5 h-3.5 text-[#7FA9BC]" />
@@ -229,6 +223,16 @@ export default function App() {
           </div>
         </div>
       )}
+
+      {/* Persistent Mobile Bottom Navigation Bar */}
+      <MobileBottomNav
+        currentView={currentView}
+        onViewChange={(view) => {
+          setCurrentView(view);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
+        selectedModulesCount={selectedModules.length}
+      />
 
       {/* Footer */}
       <Footer />

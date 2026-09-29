@@ -91,7 +91,7 @@ export const PrototypeView: React.FC<PrototypeViewProps> = ({
         serviceName: 'IV Therapy «Dubai Jetlag Recovery»',
         doctorName: 'Выездная медицинская бригада Modern Medicine',
         recommendation: 'Рекомендуется интенсивная инфузионная терапия с электролитами и витаминами для снятия симптомов усталости и нормализации клеточного энергообмена.',
-        priceAED: 850,
+        priceAED: 283,
         urgency: 'Сегодня (в течение 30-45 мин)',
         preparation: 'Процедура доступна с выездом в номер отеля Fairmont Dubai.',
         keyHighlights: ['Мгновенный подъем сил', 'Выезд в номер', 'Премиальные компоненты']
@@ -182,10 +182,10 @@ export const PrototypeView: React.FC<PrototypeViewProps> = ({
                 Эстетическая медицина, превентивные Check-up программы и точная диагностика на основе анатомической доказательности в самом сердце Дубая.
               </p>
 
-              <div className="flex flex-wrap items-center gap-5 pt-2">
+              <div className="flex flex-wrap items-center gap-4 pt-2">
                 <button
-                  onClick={() => onBookService('Первичный прием и диагностика', 500)}
-                  className="px-8 py-4 bg-[#222321] hover:bg-black text-white rounded-full text-sm font-medium transition-all shadow-lg active:scale-95 flex items-center gap-2 cursor-pointer"
+                  onClick={() => onBookService('Первичный прием и диагностика', 167)}
+                  className="w-full sm:w-auto px-7 py-3.5 bg-[#222321] hover:bg-black text-white rounded-full text-sm font-medium transition-all shadow-lg active:scale-95 flex items-center justify-center gap-2 cursor-pointer"
                 >
                   <span>Записаться на консультацию</span>
                   <ArrowRight className="w-4 h-4 text-[#7FA9BC]" />

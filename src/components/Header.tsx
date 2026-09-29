@@ -26,30 +26,29 @@ export const Header: React.FC<HeaderProps> = ({
   return (
     <>
       {/* Top Elite Minimalist Utility Bar */}
-      <div className="bg-[#222321] text-[#F7F6F3] text-[11px] py-1.5 px-4 tracking-wide border-b border-[#353633]">
-        <div className="max-w-[1360px] mx-auto flex flex-wrap items-center justify-between gap-2">
+      <div className="bg-[#222321] text-[#F7F6F3] text-[11px] py-1.5 px-3 sm:px-4 tracking-wide border-b border-[#353633]">
+        <div className="max-w-[1360px] mx-auto flex items-center justify-between gap-2">
           
           {/* Location & License Info */}
-          <div className="flex items-center space-x-2.5 opacity-90 text-[11px] flex-wrap">
-            <span className="flex items-center gap-1 font-medium">
-              <MapPin className="w-3 h-3 text-[#7FA9BC]" />
-              Fairmont Dubai, Suite 2105 (21st Floor) • Sheikh Zayed Rd
+          <div className="flex items-center space-x-2 opacity-90 text-[10px] sm:text-[11px] truncate">
+            <span className="flex items-center gap-1 font-medium truncate">
+              <MapPin className="w-3 h-3 text-[#7FA9BC] shrink-0" />
+              <span className="truncate">Suite 2105 • Fairmont Dubai</span>
             </span>
             <span className="hidden sm:inline opacity-30">•</span>
-            <span className="hidden md:inline text-[#E9DFD5]/90 text-[10px] uppercase tracking-wider">
+            <span className="hidden lg:inline text-[#E9DFD5]/90 text-[10px] uppercase tracking-wider">
               DHA License • 24/7 Concierge Medicine
             </span>
           </div>
 
-          {/* WhatsApp Direct & Quick Language / Currency in Top Bar */}
-          <div className="flex items-center space-x-3 text-[11px]">
+          {/* Quick Language / Currency in Top Bar */}
+          <div className="flex items-center space-x-2 text-[10px] sm:text-[11px] shrink-0">
             {/* Currency Selector */}
-            <div className="flex items-center bg-white/10 rounded-full px-2.5 py-0.5 text-[11px]">
-              <span className="text-white/60 mr-1 text-[10px]">Валюта:</span>
+            <div className="flex items-center bg-white/10 rounded-full px-2 py-0.5 text-[10px] sm:text-[11px]">
               <select
                 value={currentCurrency}
                 onChange={(e) => onCurrencyChange(e.target.value as Currency)}
-                className="bg-transparent font-medium text-white focus:outline-none cursor-pointer text-[11px]"
+                className="bg-transparent font-medium text-white focus:outline-none cursor-pointer"
               >
                 <option value="AED" className="text-[#222321]">AED (د.إ)</option>
                 <option value="USD" className="text-[#222321]">USD ($)</option>
@@ -63,7 +62,7 @@ export const Header: React.FC<HeaderProps> = ({
                 <button
                   key={lang}
                   onClick={() => onLangChange(lang)}
-                  className={`px-2 py-0.5 rounded-full uppercase transition-all ${
+                  className={`px-1.5 sm:px-2 py-0.5 rounded-full uppercase transition-all ${
                     currentLang === lang
                       ? 'bg-white text-[#222321] font-bold shadow-xs'
                       : 'text-white/70 hover:text-white'
@@ -78,12 +77,12 @@ export const Header: React.FC<HeaderProps> = ({
             {onOpenB2BProposal && (
               <button
                 onClick={onOpenB2BProposal}
-                className="hover:text-white transition-all flex items-center gap-1.5 font-medium bg-[#7FA9BC]/25 hover:bg-[#7FA9BC]/40 text-white px-2.5 py-0.5 rounded-full cursor-pointer text-[10px] border border-[#7FA9BC]/30"
+                className="hover:text-white transition-all flex items-center gap-1 font-medium bg-[#7FA9BC]/25 hover:bg-[#7FA9BC]/40 text-white px-2 py-0.5 rounded-full cursor-pointer text-[10px] border border-[#7FA9BC]/30"
                 title="Открыть коммерческое предложение B2B для Fairmont Dubai"
               >
                 <FileText className="w-3 h-3 text-[#7FA9BC]" />
-                <span className="hidden md:inline font-semibold">B2B Proposal Fairmont</span>
-                <span className="md:hidden">B2B</span>
+                <span className="hidden sm:inline font-semibold">B2B Proposal</span>
+                <span className="sm:hidden">B2B</span>
               </button>
             )}
 
@@ -92,7 +91,7 @@ export const Header: React.FC<HeaderProps> = ({
               href="https://wa.me/971529266594"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-[#7FA9BC] transition-colors flex items-center gap-1 font-medium bg-[#7FA9BC]/20 hover:bg-[#7FA9BC]/30 text-white px-2.5 py-0.5 rounded-full hidden sm:flex"
+              className="hover:text-[#7FA9BC] transition-colors items-center gap-1 font-medium bg-[#7FA9BC]/20 hover:bg-[#7FA9BC]/30 text-white px-2.5 py-0.5 rounded-full hidden md:flex"
             >
               <MessageCircle className="w-3 h-3 text-[#7FA9BC]" />
               <span>WhatsApp: +971 52 926 6594</span>

@@ -13,7 +13,8 @@ import {
   UserCheck, 
   FileText,
   CheckCircle2,
-  Maximize2
+  Maximize2,
+  Download
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
@@ -375,7 +376,22 @@ export const ExecutivePresentationViewer: React.FC = () => {
         </div>
 
         {/* Action Controls */}
-        <div className="flex items-center gap-2 shrink-0">
+        <div className="flex flex-wrap items-center gap-2 shrink-0">
+          <a
+            href="https://storage.googleapis.com/uspeshnyy-projects/modern_medicine/ModernMed-webdev.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            download="ModernMed-webdev.pdf"
+            className="px-4 py-2 rounded-full bg-[#222321] hover:bg-black text-white text-xs font-medium transition-all flex items-center gap-2 cursor-pointer shadow-sm group"
+            title="Скачать официальную PDF презентацию Modern Medicine"
+          >
+            <div className="w-4 h-4 rounded bg-[#E04F44] flex items-center justify-center text-white text-[9px] font-bold">
+              PDF
+            </div>
+            <span>Скачать презентацию (14 МБ)</span>
+            <Download className="w-3.5 h-3.5 text-[#7FA9BC] group-hover:translate-y-0.5 transition-transform" />
+          </a>
+
           <button
             onClick={handleCopyPresentationText}
             className="px-4 py-2 rounded-full bg-[#F7F6F3] hover:bg-[#EFEDE8] border border-[#E2DFD7] text-[#222321] text-xs font-medium transition-all flex items-center gap-1.5 cursor-pointer shadow-2xs"

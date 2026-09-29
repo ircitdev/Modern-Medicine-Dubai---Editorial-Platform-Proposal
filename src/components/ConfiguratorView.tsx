@@ -17,7 +17,8 @@ import {
   Zap,
   Smartphone,
   Calendar,
-  ChevronRight
+  ChevronRight,
+  FileText
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { ConfiguratorFaq } from './ConfiguratorFaq';
@@ -156,62 +157,100 @@ ${selectedModules.map((m, i) => `${i + 1}. ${m.title} (${m.timeWeeks} нед.)\n
 
   return (
     <div className="space-y-12">
-      {/* Editorial Header */}
-      <div className="max-w-4xl space-y-6">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#E2DFD7] bg-white text-[#222321] text-xs font-medium tracking-wide shadow-sm">
-          <Sparkles className="w-3.5 h-3.5 text-[#7FA9BC]" />
-          <span>Интерактивный конструктор ТЗ для Елены Киреевой</span>
+      {/* Editorial Header with Large PDF Download Button */}
+      <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-8">
+        <div className="max-w-3xl space-y-6">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#E2DFD7] bg-white text-[#222321] text-xs font-medium tracking-wide shadow-sm">
+            <Sparkles className="w-3.5 h-3.5 text-[#7FA9BC]" />
+            <span>Интерактивный конструктор ТЗ</span>
+          </div>
+
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-serif text-[#222321] leading-[0.95] tracking-tight">
+            Проектирование<br />
+            цифровой<br />
+            платформы.
+          </h1>
+
+          <p className="text-[#747775] text-base sm:text-lg max-w-2xl leading-relaxed">
+            На основе комплексного аудита клиники в Fairmont Dubai мы структурировали модульную архитектуру. 
+            Выбирайте компоненты системы — расчет бюджета, сроков и визуальный прототип обновляются мгновенно.
+          </p>
+
+          {/* Preset Selector */}
+          <div className="pt-2">
+            <div className="text-xs uppercase font-semibold text-[#747775] tracking-wider mb-3">
+              Готовые конфигурационные пакеты:
+            </div>
+            <div className="flex flex-wrap gap-2.5">
+              <button
+                onClick={() => onApplyPreset('mvp')}
+                className={`px-5 py-2.5 rounded-full text-xs font-medium transition-all ${
+                  activePreset === 'mvp'
+                    ? 'bg-[#222321] text-white shadow-md'
+                    : 'bg-white/80 border border-[#E2DFD7] text-[#222321] hover:bg-white hover:border-[#222321]'
+                }`}
+              >
+                🌱 MVP Старт (3.5 нед.)
+              </button>
+
+              <button
+                onClick={() => onApplyPreset('standard')}
+                className={`px-5 py-2.5 rounded-full text-xs font-medium transition-all flex items-center gap-1.5 ${
+                  activePreset === 'standard'
+                    ? 'bg-[#222321] text-white shadow-md'
+                    : 'bg-white/80 border border-[#E2DFD7] text-[#222321] hover:bg-white hover:border-[#222321]'
+                }`}
+              >
+                <span>⭐ Оптимально: Дубай</span>
+                <span className="text-[10px] bg-[#7FA9BC] text-white px-2 py-0.5 rounded-full">Рекомендуем</span>
+              </button>
+
+              <button
+                onClick={() => onApplyPreset('vip')}
+                className={`px-5 py-2.5 rounded-full text-xs font-medium transition-all ${
+                  activePreset === 'vip'
+                    ? 'bg-[#222321] text-white shadow-md'
+                    : 'bg-[#E9DFD5]/70 border border-[#B49E87]/40 text-[#222321] hover:bg-[#E9DFD5]'
+                }`}
+              >
+                👑 Full Premium VIP (с Stripe & BNPL)
+              </button>
+            </div>
+          </div>
         </div>
 
-        <h1 className="text-4xl sm:text-6xl lg:text-7xl font-serif text-[#222321] leading-[0.95] tracking-tight">
-          Проектирование цифровой платформы.
-        </h1>
+        {/* Large PDF Download Button on the Right */}
+        <div className="lg:pt-4 shrink-0">
+          <a
+            href="https://storage.googleapis.com/uspeshnyy-projects/modern_medicine/ModernMed-webdev.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            download="ModernMed-webdev.pdf"
+            className="group relative flex items-center gap-4 p-5 sm:p-6 bg-[#222321] hover:bg-black text-white rounded-3xl border border-[#353633] shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+          >
+            {/* Red PDF Icon badge */}
+            <div className="w-13 h-13 sm:w-14 sm:h-14 rounded-2xl bg-[#E04F44]/20 border border-[#E04F44]/40 flex items-center justify-center shrink-0 group-hover:bg-[#E04F44]/30 transition-colors shadow-inner">
+              <FileText className="w-7 h-7 sm:w-8 sm:h-8 text-[#E04F44]" />
+            </div>
 
-        <p className="text-[#747775] text-base sm:text-lg max-w-2xl leading-relaxed">
-          На основе комплексного аудита клиники в Fairmont Dubai мы структурировали модульную архитектуру. 
-          Выбирайте компоненты системы — расчет бюджета, сроков и визуальный прототип обновляются мгновенно.
-        </p>
-
-        {/* Preset Selector */}
-        <div className="pt-2">
-          <div className="text-xs uppercase font-semibold text-[#747775] tracking-wider mb-3">
-            Готовые конфигурационные пакеты:
-          </div>
-          <div className="flex flex-wrap gap-2.5">
-            <button
-              onClick={() => onApplyPreset('mvp')}
-              className={`px-5 py-2.5 rounded-full text-xs font-medium transition-all ${
-                activePreset === 'mvp'
-                  ? 'bg-[#222321] text-white shadow-md'
-                  : 'bg-white/80 border border-[#E2DFD7] text-[#222321] hover:bg-white hover:border-[#222321]'
-              }`}
-            >
-              🌱 MVP Старт (3.5 нед.)
-            </button>
-
-            <button
-              onClick={() => onApplyPreset('standard')}
-              className={`px-5 py-2.5 rounded-full text-xs font-medium transition-all flex items-center gap-1.5 ${
-                activePreset === 'standard'
-                  ? 'bg-[#222321] text-white shadow-md'
-                  : 'bg-white/80 border border-[#E2DFD7] text-[#222321] hover:bg-white hover:border-[#222321]'
-              }`}
-            >
-              <span>⭐ Оптимально: Дубай</span>
-              <span className="text-[10px] bg-[#7FA9BC] text-white px-2 py-0.5 rounded-full">Рекомендуем</span>
-            </button>
-
-            <button
-              onClick={() => onApplyPreset('vip')}
-              className={`px-5 py-2.5 rounded-full text-xs font-medium transition-all ${
-                activePreset === 'vip'
-                  ? 'bg-[#222321] text-white shadow-md'
-                  : 'bg-[#E9DFD5]/70 border border-[#B49E87]/40 text-[#222321] hover:bg-[#E9DFD5]'
-              }`}
-            >
-              👑 Full Premium VIP (с Stripe & BNPL)
-            </button>
-          </div>
+            <div className="text-left">
+              <div className="flex items-center gap-2">
+                <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#E04F44] bg-[#E04F44]/15 px-2 py-0.5 rounded-full">
+                  PDF
+                </span>
+                <span className="text-[11px] text-[#7FA9BC] font-mono font-semibold">
+                  14 МБ • 8 слайдов
+                </span>
+              </div>
+              <div className="text-lg sm:text-xl font-serif font-bold text-white mt-1 leading-snug">
+                Скачать презентацию
+              </div>
+              <div className="text-xs text-[#F7F6F3]/70 font-light flex items-center gap-1.5 mt-0.5">
+                <span>ModernMed-webdev.pdf</span>
+                <Download className="w-3.5 h-3.5 text-[#7FA9BC] group-hover:translate-y-0.5 transition-transform" />
+              </div>
+            </div>
+          </a>
         </div>
       </div>
 
